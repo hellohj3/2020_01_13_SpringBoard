@@ -3,11 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <!-- Load Properties -->
-    <properties resource="database.properties"/>
-
     <!-- Set Alias -->
     <typeAliases>
-        <package name="com.springboard.base"/>
+        <package name="com.springboard.admin"/>
     </typeAliases>
 </configuration>
