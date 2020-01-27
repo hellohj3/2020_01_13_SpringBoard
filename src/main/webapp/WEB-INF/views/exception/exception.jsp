@@ -1,0 +1,22 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: hello
+  Date: 2020-01-20
+  Time: 오후 5:01
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
+<!-- Include header -->
+<%@ include file="/WEB-INF/views/include/head.jsp"%>
+
+<!-- Include pageHead -->
+<%@ include file="/WEB-INF/views/include/expHead.jsp"%>
+
+<!-- Main Content -->
+<div class="container"></div>
+<hr>
+
+<!-- Include Footer -->
+<%@ include file="/WEB-INF/views/include/foot.jsp"%>

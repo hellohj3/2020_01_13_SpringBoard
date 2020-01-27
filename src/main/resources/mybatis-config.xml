@@ -5,6 +5,6 @@
 <configuration>
     <!-- Set Alias -->
     <typeAliases>
-        <package name="com.springboard.admin"/>
+        <package name="com.springboard.user"/>
     </typeAliases>
 </configuration>
