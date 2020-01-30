@@ -41,8 +41,4 @@
             <property name="paramName" value="lang"/>
         </bean>
     </mvc:interceptors>
-
-    <!-- SpringSecurity config -->
-    <beans:bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
-
 </beans>

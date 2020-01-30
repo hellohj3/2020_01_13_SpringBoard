@@ -1,10 +1,21 @@
 package com.springboard.user;
 
+import java.util.Date;
+
 public class UserVO {
+    private int idx;
     private String id;
     private String password;
     private String name;
-    private int level;
+    private Date regDate;
+
+    public int getIdx() {
+        return idx;
+    }
+
+    public void setIdx(int idx) {
+        this.idx = idx;
+    }
 
     public String getId() {
         return id;
@@ -30,21 +41,22 @@ public class UserVO {
         this.name = name;
     }
 
-    public int getLevel() {
-        return level;
+    public Date getRegDate() {
+        return regDate;
     }
 
-    public void setLevel(int level) {
-        this.level = level;
+    public void setRegDate(Date regDate) {
+        this.regDate = regDate;
     }
 
     @Override
     public String toString() {
         return "UserVO{" +
-                "id='" + id + '\'' +
+                "idx=" + idx +
+                ", id='" + id + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
-                ", level=" + level +
+                ", regDate='" + regDate + '\'' +
                 '}';
     }
 }

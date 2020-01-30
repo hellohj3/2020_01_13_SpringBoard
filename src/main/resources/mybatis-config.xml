@@ -5,6 +5,6 @@
 <configuration>
     <!-- Set Alias -->
     <typeAliases>
-        <package name="com.springboard.user"/>
+        <typeAlias type="com.springboard.user.UserVO" alias="UserVO"/>
     </typeAliases>
 </configuration>

@@ -11,6 +11,14 @@ import java.util.Map;
 @Controller
 public class ExceptionController {
 
+    /**
+     * Intercept Error Data
+     * @return Error Page
+     * @param pageNm - Used page name value for expHead.jsp. String
+     * @param map - Include Error data. HashMap
+     * @exception Exception
+     */
+
     @RequestMapping("/exception{error_code}.do")
     public String error(Model model, HttpServletRequest request, @PathVariable String error_code) {
         String msg = (String) request.getAttribute("javax.servlet.error.message");

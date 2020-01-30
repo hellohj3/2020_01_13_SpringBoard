@@ -18,7 +18,7 @@ import com.springboard.user.UserVO;
  *  </pre>
  */
 
-public interface SignInService {
+public interface UserService {
 
     /**
      * Do SignIn
