@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,7 +37,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand" href="/">Blog</a>
+        <a class="navbar-brand" href="/"><spring:message code="message.head.title.signIn.${signIn}"/></a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <spring:message code="message.btn.menu"/>
             <i class="fas fa-bars"></i>
@@ -52,6 +53,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="contact.html">Contact Me</a>
                 </li>
+                <c:if test="${signIn eq 'true'}">
+                <li class="nav-item">
+                    <a class="nav-link" href="/doSignOut.do">SIGN-OUT</a>
+                </li>
+                </c:if>
             </ul>
         </div>
     </div>

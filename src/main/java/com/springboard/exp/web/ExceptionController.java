@@ -13,9 +13,9 @@ public class ExceptionController {
 
     /**
      * Intercept Error Data
-     * @return Error Page
-     * @param pageNm - Used page name value for expHead.jsp. String
-     * @param map - Include Error data. HashMap
+     * @param pageNm - String. Used page name value for expHead.jsp
+     * @param map - HashMap. Include Error data.
+     * @return String. Error Page
      * @exception Exception
      */
 

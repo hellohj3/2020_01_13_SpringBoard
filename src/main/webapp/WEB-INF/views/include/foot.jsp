@@ -47,10 +47,13 @@
 <script>
     function chkMsg() {
         var receive = "${msg}";
+
         if (receive == "signSuc") {
             alert('<spring:message code="message.home.msg.signSuc"/>');
         } else if (receive == "signFail") {
             alert('<spring:message code="message.home.msg.signFail"/>');
+        } else if (receive == "signOut") {
+            alert('<spring:message code="message.home.msg.signOut"/>');
         }
     }
 </script>
