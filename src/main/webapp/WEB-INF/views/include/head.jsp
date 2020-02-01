@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: hello
+  User: MyHyem
   Date: 2020-01-20
   Time: 오후 2:27
   To change this template use File | Settings | File Templates.
@@ -30,6 +30,15 @@
     <!-- Custom styles for this template -->
     <link href="/css/clean-blog.min.css" rel="stylesheet">
 
+    <!-- Bootstrap core JavaScript -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="/js/clean-blog.min.js"></script>
+
+    <!-- CKEditor4 -->
+    <script src="/js/ckeditor/ckeditor.js"></script>
 </head>
 
 <body onload="chkMsg()">

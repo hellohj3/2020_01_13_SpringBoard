@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: hello
+  User: MyHyem
   Date: 2020-01-20
   Time: 오후 2:29
   To change this template use File | Settings | File Templates.
@@ -35,16 +35,18 @@
     </div>
 </footer>
 
-<!-- Bootstrap core JavaScript -->
-<script src="/vendor/jquery/jquery.min.js"></script>
-<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- Custom scripts for this template -->
-<script src="/js/clean-blog.min.js"></script>
-
 </body>
 
 <script>
+    ClassicEditor
+        .create( document.querySelector( '#content' ) )
+        .then( newEditor => {
+            editor = newEditor;
+        } )
+        .catch(function (error) {
+            console.log( error );
+        } );
+
     function chkMsg() {
         var receive = "${msg}";
 
@@ -54,6 +56,8 @@
             alert('<spring:message code="message.home.msg.signFail"/>');
         } else if (receive == "signOut") {
             alert('<spring:message code="message.home.msg.signOut"/>');
+        } else if (receive == "pleaseSignIn") {
+            alert('<spring:message code="message.home.msg.pleaseSignIn"/>');
         }
     }
 </script>

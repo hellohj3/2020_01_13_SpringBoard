@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: 82109
+  User: MyHyem
   Date: 2020-01-07
   Time: 오후 3:05
   To change this template use File | Settings | File Templates.
@@ -73,7 +73,7 @@
             <hr>
             <!-- Pager -->
             <div class="clearfix">
-                <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+                <a class="btn btn-primary float-right" href="/writePost.do"><spring:message code="message.home.write.btn"/></a>
             </div>
         </div>
     </div>

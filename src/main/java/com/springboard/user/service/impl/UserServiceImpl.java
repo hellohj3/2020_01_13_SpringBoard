@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 
 /**
- * Class to SignIn Process
+ * Class for User handling Process
  * @author MyHyem
  * @since 2020.01.20
  * @version 1.0
@@ -30,11 +30,10 @@ public class UserServiceImpl implements UserService {
 
     /**
      * Do SignIn
-     * @param userVO UserVO
+     * @param userVO - UserVO. user data
      * @return UserVO
      * @exception Exception
      */
-
     @Override
     public UserVO doSignIn(UserVO userVO) throws Exception {
         userVO = userDAO.doSignIn(userVO);

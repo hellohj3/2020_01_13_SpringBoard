@@ -18,7 +18,7 @@ import java.util.Map;
 @Controller
 public class UserController {
 
-    /** SignIn Service */
+    /** User Service */
     @Autowired
     private UserService userService;
 
@@ -28,17 +28,21 @@ public class UserController {
 
     /**
      * Go to SignIn Page
-     * @param pageNm - String. Used page name value for ctnHead.jsp
+     * @param model - Model. Send data and view
+     * @param request - HttpServletRequest. Other request receive
+     * @param redirectAttributes - RedirectAttributes. For send Param to other Controller
+     * @param httpSession - HttpSession. Get session data
+     * @param userVO - UserVO. Handling session data
+     * @param pageNm|bgNm - String|String. Used value for ctnHead.jsp
      * @param msg - String. Used call alert message for foot.jsp
-     * @param request - HttpServletRequest. For session handling
-     * @return String. SignIn Page address
+     * @param signIn - String. Used change message for head.jsp
+     * @return String. SignIn Page address or main page
      * @exception Exception
      */
     @RequestMapping("/signIn.do")
-    public String signIn(ModelMap model, HttpServletRequest request, RedirectAttributes redirectAttributes) throws Exception {
+    public String signIn(ModelMap model, HttpServletRequest request, RedirectAttributes redirectAttributes, HttpSession httpSession) throws Exception {
         /** call session data for check sign-in */
-        HttpSession session = request.getSession();
-        UserVO userVO = (UserVO)session.getAttribute("signIn");
+        UserVO userVO = (UserVO) httpSession.getAttribute("signIn");
 
         /** receive message date from other controller. msg */
         String msg = "";
@@ -47,17 +51,19 @@ public class UserController {
             msg = (String) flashMap.get("msg");
         }
 
-        model.addAttribute("signIn", (userVO != null) ? "true" : "false");
-
         /** branch from sign-in data */
         if (userVO != null) {
             model.addAttribute("pageNm", "home");
+            model.addAttribute("bgNm", "home");
             redirectAttributes.addFlashAttribute("msg", msg);
+            model.addAttribute("signIn", "true");
 
             return "redirect:/";
         } else {
             model.addAttribute("pageNm", "signIn");
+            model.addAttribute("bgNm", "home");
             model.addAttribute("msg", msg);
+            model.addAttribute("signIn", "false");
 
             return "blog/signIn";
         }
@@ -65,20 +71,21 @@ public class UserController {
 
     /**
      * Do SignIn
-     * @param userVO - UserVO. Get ID, PASSWORD data
-     * @param resultVO - UserVO. Do sign-in get user data
-     * @param request - HttpServletRequest. For session handling
+     * @param userVO - UserVO. Get ID, PASSWORD data from view
+     * @param request - HttpServletRequest. Other request receive
      * @param redirectAttributes - RedirectAttributes. For send Param to other Controller
+     * @param resultVO - UserVO. Do sign-in get user data
+     * @param httpsession - HttpSession. Add session data
      * @return String. Redirect target controller mapping name.
      * @exception Exception
      */
     @RequestMapping("/doSignIn.do")
     public String doSignIn(UserVO userVO, HttpServletRequest request, RedirectAttributes redirectAttributes) throws Exception {
         UserVO resultVO = userService.doSignIn(userVO);
-        HttpSession session = request.getSession();
+        HttpSession httpSession = request.getSession();
 
         if (passwordEncoder.matches(userVO.getPassword(), resultVO.getPassword())) {
-            session.setAttribute("signIn", resultVO);
+            httpSession.setAttribute("signIn", resultVO);
 
             redirectAttributes.addFlashAttribute("msg", "signSuc");
 
@@ -92,16 +99,17 @@ public class UserController {
 
     /**
      * Do SignOut
-     * @param resultVO - UserVO. Get session data
      * @param redirectAttributes - RedirectAttributes. For send Param to other Controller
+     * @param httpSession - HttpSession. Get session data
+     * @param userVO - UserVO. Handling session data
      * @return String. Redirect target controller mapping name.
      * @exception Exception
      */
     @RequestMapping("/doSignOut.do")
     public String doSignOut(RedirectAttributes redirectAttributes, HttpSession httpSession) throws Exception {
-        UserVO resultVO = (UserVO) httpSession.getAttribute("signIn");
+        UserVO userVO = (UserVO) httpSession.getAttribute("signIn");
 
-        if (resultVO != null) {
+        if (userVO != null) {
             httpSession.removeAttribute("signIn");
             httpSession.invalidate();
             redirectAttributes.addFlashAttribute("msg", "signOut");

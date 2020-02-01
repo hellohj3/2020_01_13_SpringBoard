@@ -3,7 +3,7 @@ package com.springboard.user.service;
 import com.springboard.user.UserVO;
 
 /**
- * Interface to SignIn Process
+ * Interface to User handling Process
  * @author MyHyem
  * @since 2020.01.20
  * @version 1.0
@@ -22,7 +22,7 @@ public interface UserService {
 
     /**
      * Do SignIn
-     * @param userVO UserVO
+     * @param userVO - UserVO. userVO data
      * @return UserVO
      * @exception Exception
      */

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 /**
- * Class to SignIn DAO Process
+ * Class for User handling Process
  * @author MyHyem
  * @since 2020.01.27
  * @version 1.0
@@ -20,7 +20,6 @@ import org.springframework.stereotype.Repository;
  *  2020.01.27          MyHyem              Initial Creation
  *  </pre>
  */
-
 @Repository("UserDAO")
 public class UserDAO {
 

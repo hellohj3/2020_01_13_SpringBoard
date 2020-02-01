@@ -94,6 +94,7 @@
     .form-signin input[type=email],
     .form-signin input[type=password],
     .form-signin input[type=text],
+    .form-signin input[type=submit],
     .form-signin button {
         width: 100%;
         display: block;
@@ -163,9 +164,9 @@
             <p id="profile-name" class="profile-name-card"></p>
             <form class="form-signin" action="/doSignIn.do" method="post" onsubmit="return chkUser()">
                 <span id="reauth-email" class="reauth-email"></span>
-                <input type="text" name="id" id="id" class="form-control" placeholder="<spring:message code="message.signIn.placeholder.id"/>" required autofocus>
-                <input type="password" name="password" id="password" class="form-control" placeholder="<spring:message code="message.signIn.placeholder.password"/>" required>
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit"><spring:message code="message.signIn.btn"/></button>
+                <input type="text" class="form-control" id="id" name="id" placeholder="<spring:message code="message.signIn.id.placeholder"/>" required autofocus>
+                <input type="password" class="form-control" id="password" name="password" placeholder="<spring:message code="message.signIn.password.placeholder"/>" required>
+                <input type="submit" class="btn btn-lg btn-primary btn-block btn-signin" value="<spring:message code="message.signIn.btn"/>">
             </form><!-- /form -->
         </div><!-- /card-container -->
     </div>

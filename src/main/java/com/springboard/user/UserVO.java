@@ -2,6 +2,21 @@ package com.springboard.user;
 
 import java.util.Date;
 
+/**
+ * Class for holding user information
+ * @author MyHyem
+ * @since 2020.01.20
+ * @version 1.0
+ * @see
+ *
+ * <pre>
+ * << Modification Information >>
+ *
+ *   Modified date       Modifier              Modifications
+ *  --------------      ----------       ---------------------------
+ *  2020.01.20          MyHyem              Initial Creation
+ *  </pre>
+ */
 public class UserVO {
     private int idx;
     private String id;

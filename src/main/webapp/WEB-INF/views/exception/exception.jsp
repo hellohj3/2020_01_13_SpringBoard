@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: hello
+  User: MyHyem
   Date: 2020-01-20
   Time: 오후 5:01
   To change this template use File | Settings | File Templates.
@@ -12,7 +12,7 @@
 <%@ include file="/WEB-INF/views/include/head.jsp"%>
 
 <!-- Include pageHead -->
-<%@ include file="/WEB-INF/views/include/expHead.jsp"%>
+<%@ include file="/WEB-INF/views/include/ctnHead.jsp"%>
 
 <!-- Main Content -->
 <div class="container"></div>
