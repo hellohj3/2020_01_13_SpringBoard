@@ -8,9 +8,9 @@
     <insert id="insertPost" parameterType="PostVO">
         <![CDATA[
             INSERT INTO posts
-            (title, content, writer)
+            (title, sub_title, content, writer)
             VALUES
-            (#{title}, #{content}, #{writer})
+            (#{title}, #{subTitle}, #{content}, #{writer})
         ]]>
     </insert>
 
@@ -36,7 +36,9 @@
         <![CDATA[
             UPDATE posts SET
                 title = #{title}
+                ,sub_title = #{subTitle}
                 ,content = #{content}
+                ,modify_date = #{modifyDate}
             WHERE
                 1=1
                 AND idx = #{idx}
@@ -55,9 +57,11 @@
     <resultMap id="Post" type="PostVO">
         <id property="idx" column="idx"/>
         <result property="title" column="title"/>
+        <result property="subTitle" column="sub_title"/>
         <result property="content" column="content"/>
         <result property="writer" column="writer"/>
         <result property="regDate" column="reg_date"/>
+        <result property="modifyDate" column="modify_date"/>
         <result property="cnt" column="cnt"/>
     </resultMap>
 </mapper>

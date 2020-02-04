@@ -18,19 +18,21 @@ import java.util.Date;
  *  </pre>
  */
 public class PostVO {
-    private int tdx;
+    private int idx;
     private String title;
+    private String subTitle;
     private String content;
     private String writer;
     private Date regDate;
+    private String modifyDate;
     private int cnt;
 
-    public int getTdx() {
-        return tdx;
+    public int getIdx() {
+        return idx;
     }
 
-    public void setTdx(int tdx) {
-        this.tdx = tdx;
+    public void setIdx(int idx) {
+        this.idx = idx;
     }
 
     public String getTitle() {
@@ -39,6 +41,14 @@ public class PostVO {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getSubTitle() {
+        return subTitle;
+    }
+
+    public void setSubTitle(String subTitle) {
+        this.subTitle = subTitle;
     }
 
     public String getContent() {
@@ -65,6 +75,14 @@ public class PostVO {
         this.regDate = regDate;
     }
 
+    public String getModifyDate() {
+        return modifyDate;
+    }
+
+    public void setModifyDate(String modifyDate) {
+        this.modifyDate = modifyDate;
+    }
+
     public int getCnt() {
         return cnt;
     }
@@ -76,11 +94,13 @@ public class PostVO {
     @Override
     public String toString() {
         return "PostVO{" +
-                "tdx=" + tdx +
+                "idx=" + idx +
                 ", title='" + title + '\'' +
+                ", subTitle='" + subTitle + '\'' +
                 ", content='" + content + '\'' +
                 ", writer='" + writer + '\'' +
                 ", regDate=" + regDate +
+                ", modifyDate=" + modifyDate +
                 ", cnt=" + cnt +
                 '}';
     }

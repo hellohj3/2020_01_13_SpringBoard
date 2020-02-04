@@ -6,7 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <!-- Include header -->
 <%@ include file="/WEB-INF/views/include/head.jsp"%>
@@ -164,8 +163,8 @@
             <p id="profile-name" class="profile-name-card"></p>
             <form class="form-signin" action="/doSignIn.do" method="post" onsubmit="return chkUser()">
                 <span id="reauth-email" class="reauth-email"></span>
-                <input type="text" class="form-control" id="id" name="id" placeholder="<spring:message code="message.signIn.id.placeholder"/>" required autofocus>
-                <input type="password" class="form-control" id="password" name="password" placeholder="<spring:message code="message.signIn.password.placeholder"/>" required>
+                <input type="text" class="form-control" id="id" name="id" placeholder="<spring:message code="message.signIn.placeholder.id"/>" required autofocus>
+                <input type="password" class="form-control" id="password" name="password" placeholder="<spring:message code="message.signIn.placeholder.password"/>" required>
                 <input type="submit" class="btn btn-lg btn-primary btn-block btn-signin" value="<spring:message code="message.signIn.btn"/>">
             </form><!-- /form -->
         </div><!-- /card-container -->
@@ -179,7 +178,7 @@
 
         /* Checking params is " '', null, undefined, 0, NaN" */
         if ( !id || !password ) {
-            alert("<spring:message code="message.signIn.empty.alert"/>");
+            alert("<spring:message code="message.signIn.alert.empty"/>");
             return false;
         } else {
             return true;

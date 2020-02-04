@@ -7,6 +7,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,15 +61,12 @@
                     <a class="nav-link" href="/aboutMe.do">About Me</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="post.html">Post</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="contact.html">Contact Me</a>
                 </li>
                 <c:if test="${signIn eq 'true'}">
-                <li class="nav-item">
-                    <a class="nav-link" href="/doSignOut.do">SIGN-OUT</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/doSignOut.do">SIGN-OUT</a>
+                    </li>
                 </c:if>
             </ul>
         </div>

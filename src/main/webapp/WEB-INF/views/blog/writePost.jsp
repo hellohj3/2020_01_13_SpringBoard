@@ -6,7 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <!-- Include header -->
 <%@ include file="/WEB-INF/views/include/head.jsp"%>
@@ -25,17 +24,31 @@
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
             <div class="post-preview">
-                <form action="/doWritePost.do" method="post" onsubmit="return chkPost()">
+                <form action="${(pageNm eq 'writePost') ? '/doWritePost.do' : '/doModifyPost.do'}" method="post" onsubmit="return chkPost()">
+                    <c:if test="${pageNm eq 'modifyPost'}">
+                        <input type="hidden" name="idx" value="${post.idx}">
+                    </c:if>
                     <div class="mb-3">
                         <label for="title"><spring:message code="message.writePost.label.title"/></label>
-                        <input type="text" class="form-control" id="title" name="title" placeholder="<spring:message code="message.writePost.label.title.placeholder"/>" required>
+                        <input type="text" class="form-control" id="title" name="title" value="${(post.title eq '') ? '' : post.title}" placeholder="<spring:message code="message.writePost.label.placeholder.title"/>" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="subTitle"><spring:message code="message.writePost.label.subTitle"/></label>
+                        <textarea class="form-control" id="subTitle" name="subTitle" rows="3" placeholder="<spring:message code="message.writePost.label.placeholder.subTitle"/>" required>${(post.subTitle eq '') ? '' : post.subTitle}</textarea>
                     </div>
                     <div class="mb-3">
                         <label for="content"><spring:message code="message.writePost.label.content"/></label>
-                        <textarea class="ckeditor form-control" id="content" name="content" placeholder="<spring:message code="message.writePost.label.content.placeholder"/>"></textarea>
+                        <textarea class="ckeditor form-control" id="content" name="content" placeholder="<spring:message code="message.writePost.label.placeholder.content"/>">${(post.content eq '') ? '' : post.content}</textarea>
                     </div>
-                    <div class="clearfix">
-                        <input type="submit" class="btn btn-primary float-right" value="<spring:message code="message.home.write.btn"/>">
+                    <div class="clearfix float-right">
+                        <c:choose>
+                            <c:when test="${pageNm eq 'writePost'}">
+                                <input type="submit" class="btn btn-primary" value="<spring:message code="message.writePost.btn.write"/>">
+                            </c:when>
+                            <c:otherwise>
+                                <input type="submit" class="btn btn-primary" value="<spring:message code="message.modifyPost.btn.modify"/>">
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                 </form>
             </div>
@@ -53,7 +66,7 @@
 
         /* Checking params is " '', null, undefined, 0, NaN" */
         if ( !title || !content ) {
-            alert("<spring:message code="message.writePost.empty.alert"/>");
+            alert("<spring:message code="message.writePost.alert.empty"/>");
             return false;
         } else {
             return true;

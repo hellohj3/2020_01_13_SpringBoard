@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!-- Footer -->
 <footer>
     <div class="container">
@@ -44,7 +45,6 @@
             editor = newEditor;
         } )
         .catch(function (error) {
-            console.log( error );
         } );
 
     function chkMsg() {
@@ -59,6 +59,29 @@
         } else if (receive == "pleaseSignIn") {
             alert('<spring:message code="message.home.msg.pleaseSignIn"/>');
         }
+    }
+
+    function sandData(mode, idx) {
+        if (mode == "doDeletePost") {
+            if (!confirm('<spring:message code="message.detailPost.alert.delete"/>')) {
+                return false;
+            }
+        }
+
+        var form = document.createElement("form");
+        form.setAttribute("charset", "UTF-8");
+        form.setAttribute("method", "Post");
+        form.setAttribute("action", "/"+mode+".do");
+
+        var hiddenField = document.createElement("input");
+        hiddenField.setAttribute("type", "hidden");
+        hiddenField.setAttribute("name", "idx");
+        hiddenField.setAttribute("value", idx);
+        form.appendChild(hiddenField);
+
+        document.body.appendChild(form);
+
+        form.submit();
     }
 </script>
 
