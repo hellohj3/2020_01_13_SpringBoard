@@ -54,7 +54,7 @@ public class EmailController {
 
     /**
      * Do Send Email
-     * @param emailVO - EmailVO. post data
+     * @param emailVO - EmailVO. email data
      * @param httpSession - HttpSession. Get session data
      * @param redirectAttributes - RedirectAttributes. For send Param to other Controller
      * @param pageNm - String. Used page name value for ctnHead.jsp
