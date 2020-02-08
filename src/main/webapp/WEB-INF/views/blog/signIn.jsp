@@ -67,21 +67,6 @@
         min-height: 1em;
     }
 
-    .reauth-email {
-        display: block;
-        color: #404040;
-        line-height: 2;
-        margin-bottom: 10px;
-        font-size: 14px;
-        text-align: center;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        -moz-box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-    }
-
     .form-signin #id,
     .form-signin #password {
         direction: ltr;
@@ -135,29 +120,11 @@
     .btn.btn-signin:focus {
         background-color: rgb(12, 97, 33);
     }
-
-    .forgot-password {
-        color: rgb(104, 145, 162);
-    }
-
-    .forgot-password:hover,
-    .forgot-password:active,
-    .forgot-password:focus{
-        color: rgb(12, 97, 33);
-    }
 </style>
 
 <!-- Main Content -->
 <div class="container">
     <div class="row">
-        <%--<div class="col-lg-8 col-md-10 mx-auto">
-            <!-- User data -->
-            <form action="/doSignIn.do" method="post" onsubmit="return chkUser()">
-                <input type="text" class="" id="id" name="id" value=""/>
-                <input type="password" class="" id="password" name="password" value=""/>
-                <input type="submit" value="<spring:message code="message.signIn.btn"/>"/>
-            </form>
-        </div>--%>
         <div class="card card-container">
             <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
             <p id="profile-name" class="profile-name-card"></p>
@@ -170,21 +137,6 @@
         </div><!-- /card-container -->
     </div>
 </div>
-
-<script>
-    function chkUser() {
-        var id = document.getElementById("id").value;
-        var password = document.getElementById("password").value;
-
-        /* Checking params is " '', null, undefined, 0, NaN" */
-        if ( !id || !password ) {
-            alert("<spring:message code="message.signIn.alert.empty"/>");
-            return false;
-        } else {
-            return true;
-        }
-    }
-</script>
 
 <hr>
 

@@ -92,7 +92,7 @@ public class PostController {
 
     /**
      * Do Write Post
-     * @param postVO - PostVO. PostVO. post data
+     * @param postVO - PostVO. post data
      * @param httpSession - HttpSession. Get session data
      * @param redirectAttributes - RedirectAttributes. For send Param to other Controller
      * @param pageNm - String. Used page name value for ctnHead.jsp
@@ -110,6 +110,8 @@ public class PostController {
             postVO.setContent(postVO.getContent().replace("&amp;lt;/script&amp;gt;", ""));
             postVO.setWriter(userVO.getName());
             postService.insert(postVO);
+
+            redirectAttributes.addFlashAttribute("msg", "writeSuc");
         } else {
             redirectAttributes.addFlashAttribute("msg", "pleaseSignIn");
         }
@@ -120,7 +122,7 @@ public class PostController {
     /**
      * Go to Modify Post Page
      * @param model - Model. Send data and view
-     * @param postVO - PostVO. PostVO. post data
+     * @param postVO - PostVO. post data
      * @param httpSession - HttpSession. Get session data
      * @param redirectAttributes - RedirectAttributes. For send Param to other Controller
      * @param pageNm - String. Used page name value for ctnHead.jsp
@@ -153,7 +155,7 @@ public class PostController {
 
     /**
      * Do Modify Post
-     * @param postVO - PostVO. PostVO. post data
+     * @param postVO - PostVO. post data
      * @param httpSession - HttpSession. Get session data
      * @param redirectAttributes - RedirectAttributes. For send Param to other Controller
      * @param pageNm - String. Used page name value for ctnHead.jsp
@@ -185,7 +187,7 @@ public class PostController {
     /**
      * Go Detail Post Page
      * @param model - Model. Send data and view
-     * @param postVO - PostVO. PostVO. post data
+     * @param postVO - PostVO. post data
      * @param httpSession - HttpSession. Get session data
      * @param pageNm - String. Used page name value for ctnHead.jsp
      * @return String. Detail Page

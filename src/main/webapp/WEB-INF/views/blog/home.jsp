@@ -46,10 +46,11 @@
                 </c:otherwise>
             </c:choose>
 
-            <!-- Pager -->
-            <div class="clearfix float-right">
-                <a class="btn btn-primary" href="/writePost.do"><spring:message code="message.home.btn.write"/></a>
-            </div>
+            <c:if test="${signIn eq 'true'}">
+                <div class="clearfix float-right">
+                    <a class="btn btn-primary" href="/writePost.do"><spring:message code="message.home.btn.write"/></a>
+                </div>
+            </c:if>
         </div>
     </div>
 </div>

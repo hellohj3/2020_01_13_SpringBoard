@@ -14,7 +14,7 @@
             <div class="col-lg-8 col-md-10 mx-auto">
                 <ul class="list-inline text-center">
                     <li class="list-inline-item">
-                        <a href="#">
+                        <a href="/sendEmail.do">
                             <span class="fa-stack fa-lg">
                                 <i class="fas fa-circle fa-stack-2x"></i>
                                 <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
@@ -22,7 +22,7 @@
                         </a>
                     </li>
                     <li class="list-inline-item">
-                        <a href="#">
+                        <a href="https://github.com/hellohj3/2020_01_13_SpringBoard" target="_blank">
                             <span class="fa-stack fa-lg">
                                 <i class="fas fa-circle fa-stack-2x"></i>
                                 <i class="fab fa-github fa-stack-1x fa-inverse"></i>
@@ -30,7 +30,7 @@
                         </a>
                     </li>
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; MyHyem-Blog 2020</p>
+                <p class="copyright text-muted">Copyright &copy; MyHyem&#39;s Blog 2020</p>
             </div>
         </div>
     </div>
@@ -38,6 +38,7 @@
 
 </body>
 
+<!-- user custom script -->
 <script>
     ClassicEditor
         .create( document.querySelector( '#content' ) )
@@ -46,6 +47,50 @@
         } )
         .catch(function (error) {
         } );
+
+    function chkUser() {
+        var id = document.getElementById("id").value;
+        var password = document.getElementById("password").value;
+
+        /* Checking params is " '', null, undefined, 0, NaN" */
+        if ( !id || !password ) {
+            alert("<spring:message code="message.signIn.alert.empty"/>");
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    function chkPost() {
+        var title = document.getElementById("title").value;
+        var content = editor.getData();
+
+        /* Checking params is " '', null, undefined, 0, NaN" */
+        if ( !title || !content ) {
+            alert("<spring:message code="message.writePost.alert.empty"/>");
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    function chkEmail() {
+        var from = document.getElementById("emailFrom").value;
+        var title = document.getElementById("emailTitle").value;
+        var content = document.getElementById("emailContent").value;
+        var reg_email = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+
+        /* Checking params is " '', null, undefined, 0, NaN" */
+        if ( !from || !title || !content ) {
+            alert("<spring:message code="message.sendEmail.alert.empty"/>");
+            return false;
+        } else if ( !reg_email.test(from) ) {
+            alert("<spring:message code="message.sendEmail.alert.from"/>");
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     function chkMsg() {
         var receive = "${msg}";
@@ -58,6 +103,12 @@
             alert('<spring:message code="message.home.msg.signOut"/>');
         } else if (receive == "pleaseSignIn") {
             alert('<spring:message code="message.home.msg.pleaseSignIn"/>');
+        } else if (receive == "writeSuc") {
+            alert('<spring:message code="message.home.msg.writeSuc"/>');
+        } else if (receive == "emailSuc") {
+            alert('<spring:message code="message.home.msg.emailSuc"/>');
+        } else if (receive == "emailFail") {
+            alert('<spring:message code="message.home.msg.emailFail"/>');
         }
     }
 

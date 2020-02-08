@@ -52,7 +52,6 @@
                     </div>
                 </form>
             </div>
-            <!-- Pager -->
         </div>
     </div>
 </div>
@@ -60,18 +59,7 @@
 <hr>
 
 <script>
-    function chkPost() {
-        var title = document.getElementById("title").value;
-        var content = editor.getData();
 
-        /* Checking params is " '', null, undefined, 0, NaN" */
-        if ( !title || !content ) {
-            alert("<spring:message code="message.writePost.alert.empty"/>");
-            return false;
-        } else {
-            return true;
-        }
-    }
 </script>
 
 <!-- Include Footer -->

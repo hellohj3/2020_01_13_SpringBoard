@@ -38,10 +38,8 @@
     <script src="/vendor/jquery/jquery.min.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Custom scripts for this template -->
+    <!-- template scripts and plugins-->
     <script src="/js/clean-blog.min.js"></script>
-
-    <!-- CKEditor4 -->
     <script src="/js/ckeditor/ckeditor.js"></script>
 </head>
 
