@@ -54,6 +54,7 @@ public class PostController {
         }
 
         model.addAttribute("signIn", (userVO != null) ? "true" : "false");
+        model.addAttribute("user", (userVO != null) ? userVO : "");
         model.addAttribute("pageNm", "home");
         model.addAttribute("bgNm", "home");
         model.addAttribute("msg", msg);

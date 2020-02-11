@@ -92,6 +92,19 @@
         }
     }
 
+    function chkReply() {
+        var writer = document.getElementById("replyWriter").value;
+        var content = document.getElementById("replyContent").value;
+
+        /* Checking params is " '', null, undefined, 0, NaN" */
+        if ( !writer || !content ) {
+            alert("<spring:message code="message.detailPost.alert.empty"/>");
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     function chkMsg() {
         var receive = "${msg}";
 

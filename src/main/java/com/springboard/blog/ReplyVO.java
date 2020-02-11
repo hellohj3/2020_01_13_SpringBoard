@@ -3,9 +3,9 @@ package com.springboard.blog;
 import java.util.Date;
 
 /**
- * Class for holding post information
+ * Class for holding reply information
  * @author MyHyem
- * @since 2020.02.01
+ * @since 2020.02.10
  * @version 1.0
  * @see
  *
@@ -14,20 +14,18 @@ import java.util.Date;
  *
  *   Modified date       Modifier              Modifications
  *  --------------      ----------       ---------------------------
- *  2020.02.01          MyHyem              Initial Creation
+ *  2020.02.10          MyHyem              Initial Creation
  *  </pre>
  */
-public class PostVO {
+public class ReplyVO {
     private int idx;
-    private String title;
-    private String subTitle;
+    private int targetIdx;
     private String content;
     private String writer;
     private Date regDate;
     private String modifyDate;
-    private int viewCnt;
-    private int replyCnt;
     private int pageNo;
+    private int limit;
 
     public int getIdx() {
         return idx;
@@ -37,20 +35,12 @@ public class PostVO {
         this.idx = idx;
     }
 
-    public String getTitle() {
-        return title;
+    public int getTargetIdx() {
+        return targetIdx;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getSubTitle() {
-        return subTitle;
-    }
-
-    public void setSubTitle(String subTitle) {
-        this.subTitle = subTitle;
+    public void setTargetIdx(int targetIdx) {
+        this.targetIdx = targetIdx;
     }
 
     public String getContent() {
@@ -85,22 +75,6 @@ public class PostVO {
         this.modifyDate = modifyDate;
     }
 
-    public int getViewCnt() {
-        return viewCnt;
-    }
-
-    public void setViewCnt(int viewCnt) {
-        this.viewCnt = viewCnt;
-    }
-
-    public int getReplyCnt() {
-        return replyCnt;
-    }
-
-    public void setReplyCnt(int replyCnt) {
-        this.replyCnt = replyCnt;
-    }
-
     public int getPageNo() {
         return pageNo;
     }
@@ -109,19 +83,25 @@ public class PostVO {
         this.pageNo = pageNo;
     }
 
+    public int getLimit() {
+        return limit;
+    }
+
+    public void setLimit(int limit) {
+        this.limit = limit;
+    }
+
     @Override
     public String toString() {
-        return "PostVO{" +
+        return "ReplyVO{" +
                 "idx=" + idx +
-                ", title='" + title + '\'' +
-                ", subTitle='" + subTitle + '\'' +
+                ", targetIdx=" + targetIdx +
                 ", content='" + content + '\'' +
                 ", writer='" + writer + '\'' +
                 ", regDate=" + regDate +
                 ", modifyDate='" + modifyDate + '\'' +
-                ", viewCnt=" + viewCnt +
-                ", replyCnt=" + replyCnt +
                 ", pageNo=" + pageNo +
+                ", limit=" + limit +
                 '}';
     }
 }

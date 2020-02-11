@@ -54,6 +54,25 @@
         ]]>
     </delete>
 
+    <update id="updateViewCnt" parameterType="PostVO">
+        <![CDATA[
+            UPDATE posts SET
+                view_cnt = view_cnt + 1
+            WHERE
+               1=1
+                AND idx = #{idx}
+        ]]>
+    </update>
+
+    <update id="updateReplyCnt" parameterType="java.util.Map">
+        <![CDATA[
+            UPDATE posts SET
+                reply_cnt = reply_cnt + #{amount}
+            WHERE
+                idx = #{postIdx}
+        ]]>
+    </update>
+
     <resultMap id="Post" type="PostVO">
         <id property="idx" column="idx"/>
         <result property="title" column="title"/>
@@ -62,6 +81,7 @@
         <result property="writer" column="writer"/>
         <result property="regDate" column="reg_date"/>
         <result property="modifyDate" column="modify_date"/>
-        <result property="cnt" column="cnt"/>
+        <result property="viewCnt" column="view_cnt"/>
+        <result property="replyCnt" column="reply_cnt"/>
     </resultMap>
 </mapper>

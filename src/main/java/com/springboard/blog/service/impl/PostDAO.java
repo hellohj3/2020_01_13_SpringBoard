@@ -5,7 +5,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Class for Post handling Process
@@ -75,5 +77,30 @@ public class PostDAO {
      */
     public void deletePost(PostVO postVO) throws Exception {
         mybatis.delete("PostDAO.deletePost", postVO);
+    }
+
+    /**
+     * Do increase and decrease view count
+     * @param postVO - PostVO. postVO data
+     * @return void
+     * @exception Exception
+     */
+    void updateViewCnt(PostVO postVO) throws Exception {
+        mybatis.update("PostDAO.updateViewCnt", postVO);
+    }
+
+    /**
+     * Do increase and decrease reply count
+     * @param postIdx - Integer. post index number data
+     * @param amount - Int. amount to increase or decrease
+     * @return void
+     * @exception Exception
+     */
+    void updateReplyCnt(Integer postIdx, int amount) throws Exception {
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("postIdx", postIdx);
+        paramMap.put("amount", amount);
+
+        mybatis.update("PostDAO.updateReplyCnt", paramMap);
     }
 }

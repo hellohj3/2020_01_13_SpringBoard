@@ -29,15 +29,15 @@
                         <input type="hidden" name="idx" value="${post.idx}">
                     </c:if>
                     <div class="mb-3">
-                        <label for="title"><spring:message code="message.writePost.label.title"/></label>
+                        <label class="col-form-label" for="title"><spring:message code="message.writePost.label.title"/></label>
                         <input type="text" class="form-control" id="title" name="title" value="${(post.title eq '') ? '' : post.title}" placeholder="<spring:message code="message.writePost.label.placeholder.title"/>" required>
                     </div>
                     <div class="mb-3">
-                        <label for="subTitle"><spring:message code="message.writePost.label.subTitle"/></label>
+                        <label class="col-form-label" for="subTitle"><spring:message code="message.writePost.label.subTitle"/></label>
                         <textarea class="form-control" id="subTitle" name="subTitle" rows="3" placeholder="<spring:message code="message.writePost.label.placeholder.subTitle"/>" required>${(post.subTitle eq '') ? '' : post.subTitle}</textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="content"><spring:message code="message.writePost.label.content"/></label>
+                        <label class="col-form-label" for="content"><spring:message code="message.writePost.label.content"/></label>
                         <textarea class="ckeditor form-control" id="content" name="content" placeholder="<spring:message code="message.writePost.label.placeholder.content"/>">${(post.content eq '') ? '' : post.content}</textarea>
                     </div>
                     <div class="clearfix float-right">

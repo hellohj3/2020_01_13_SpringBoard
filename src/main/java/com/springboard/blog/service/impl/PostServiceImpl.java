@@ -3,6 +3,7 @@ package com.springboard.blog.service.impl;
 import com.springboard.blog.PostVO;
 import com.springboard.blog.service.PostService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -44,7 +45,9 @@ public class PostServiceImpl implements PostService {
      * @return PostVO. postVO
      * @exception Exception
      */
+    @Transactional
     public PostVO read(PostVO postVO) throws Exception {
+        postDAO.updateViewCnt(postVO);
         return postDAO.selectPost(postVO);
     }
 

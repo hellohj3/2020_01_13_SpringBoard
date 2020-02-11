@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ReplyDAO">
+
+    <insert id="insertReply" parameterType="ReplyVO">
+        <![CDATA[
+            INSERT INTO replies
+            (target_idx, content, writer)
+            VALUES
+            (#{targetIdx}, #{content}, #{writer})
+        ]]>
+    </insert>
+    
+    <select id="selectList" parameterType="ReplyVO" resultMap="Reply">
+        <![CDATA[
+            SELECT *
+            FROM replies
+            WHERE
+                target_idx = #{targetIdx}
+            ORDER BY
+                idx DESC
+            LIMIT
+                #{pageNo}, #{limit}
+        ]]>
+    </select>
+
+    <delete id="deleteReply" parameterType="ReplyVO">
+        <![CDATA[
+            DELETE FROM replies
+            WHERE
+                1=1
+                AND idx = #{idx}
+        ]]>
+    </delete>
+
+    <resultMap id="Reply" type="ReplyVO">
+        <id property="idx" column="idx"/>
+        <result property="targetIdx" column="target_idx"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="writer" column="writer"/>
+        <result property="regDate" column="reg_date"/>
+        <result property="modifyDate" column="modify_date"/>
+    </resultMap>
+</mapper>

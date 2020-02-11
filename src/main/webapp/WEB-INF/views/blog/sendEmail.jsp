@@ -26,15 +26,15 @@
             <div class="post-preview">
                 <form action="/doSendEmail.do" method="post" onsubmit="return chkEmail()">
                     <div class="mb-3">
-                        <label for="emailFrom"><spring:message code="message.sendEmail.label.from"/></label>
+                        <label class="col-form-label" for="emailFrom"><spring:message code="message.sendEmail.label.from"/></label>
                         <input type="text" class="form-control" id="emailFrom" name="emailFrom" value="" placeholder="<spring:message code="message.sendEmail.label.placeholder.from"/>" required>
                     </div>
                     <div class="mb-3">
-                        <label for="emailTitle"><spring:message code="message.sendEmail.label.title"/></label>
+                        <label class="col-form-label" for="emailTitle"><spring:message code="message.sendEmail.label.title"/></label>
                         <input type="text" class="form-control" id="emailTitle" name="emailTitle" value="" placeholder="<spring:message code="message.sendEmail.label.placeholder.title"/>" required>
                     </div>
                     <div class="mb-3">
-                        <label for="emailContent"><spring:message code="message.sendEmail.label.content"/></label>
+                        <label class="col-form-label" for="emailContent"><spring:message code="message.sendEmail.label.content"/></label>
                         <textarea class="form-control" id="emailContent" name="emailContent" rows="5" placeholder="<spring:message code="message.sendEmail.label.placeholder.content"/>" required></textarea>
                     </div>
                     <div class="clearfix float-right">

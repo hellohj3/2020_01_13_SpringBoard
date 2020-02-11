@@ -7,6 +7,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<style>
+    .cus-sub { font-style: italic; }
+</style>
+
 <!-- Page Header -->
 <header class="masthead" style="background-image: url('/img/${bgNm}-bg.jpg')">
     <div class="overlay"></div>
@@ -29,7 +33,7 @@
                                     ....
                                 </c:if>
                             </h2>
-                            <span class="meta">Posted by ${post.writer} on <fmt:formatDate value="${post.regDate}" pattern="yyyy.MM.dd"/></span>
+                            <span class="cus-sub">Posted by ${post.writer} on <fmt:formatDate value="${post.regDate}" pattern="yyyy.MM.dd"/></span>
                         </div>
                     </c:when>
                     <c:otherwise>

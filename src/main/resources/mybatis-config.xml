@@ -7,5 +7,6 @@
     <typeAliases>
         <typeAlias type="com.springboard.user.UserVO" alias="UserVO"/>
         <typeAlias type="com.springboard.blog.PostVO" alias="PostVO"/>
+        <typeAlias type="com.springboard.blog.ReplyVO" alias="ReplyVO"/>
     </typeAliases>
 </configuration>
