@@ -1,6 +1,7 @@
 package com.springboard.blog.service.impl;
 
 import com.springboard.blog.PostVO;
+import com.springboard.commons.pagination.Criteria;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -52,11 +53,22 @@ public class PostDAO {
 
     /**
      * Do Select post list from database
+     * @param criteria - Criteria. pagination information
      * @return List. PostVO list
      * @exception Exception
      */
-    public List<PostVO> selectList() throws Exception {
-        return mybatis.selectList("PostDAO.selectList");
+    public List<PostVO> selectList(Criteria criteria) throws Exception {
+        return mybatis.selectList("PostDAO.selectList", criteria);
+    }
+
+    /**
+     * Do Select count post list from database
+     * @param criteria - Criteria. pagination information
+     * @return int. list count
+     * @exception Exception
+     */
+    public int cntList(Criteria criteria) throws Exception {
+        return mybatis.selectOne("PostDAO.cntList", criteria);
     }
 
     /**

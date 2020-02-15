@@ -1,6 +1,7 @@
 package com.springboard.blog.service;
 
 import com.springboard.blog.PostVO;
+import com.springboard.commons.pagination.Criteria;
 
 import java.util.List;
 
@@ -40,10 +41,19 @@ public interface PostService {
 
     /**
      * Do Select post list from database
+     * @param criteria - Criteria. pagination information
      * @return List. PostVO list
      * @exception Exception
      */
-    List<PostVO> postList() throws Exception;
+    List<PostVO> postList(Criteria criteria) throws Exception;
+
+    /**
+     * Do Select count post list from database
+     * @param criteria - Criteria. pagination information
+     * @return int. list count
+     * @exception Exception
+     */
+    int postListCnt(Criteria criteria) throws Exception;
 
     /**
      * Do Update post from database

@@ -46,6 +46,21 @@
                 </c:otherwise>
             </c:choose>
 
+            <!-- Post pagination -->
+            <nav aria-label="Page navigation">
+                <ul class="pagination pg-blue justify-content-center" id="paginationArea">
+                    <c:if test="${pageMaker.prev > 0}">
+                        <li class="page-item"><a class="page-link" href="javascript:sandPage('/',${pageMaker.prev})"><</a></li>
+                    </c:if>
+                    <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="status">
+                        <li class="page-item <c:out value='${pageMaker.criteria.page == status ? "active" : ""}'/>"><a class="page-link" href="javascript:sandPage('/',${status})">${status}</a></li>
+                    </c:forEach>
+                    <c:if test="${pageMaker.next > 0}">
+                    <li class="page-item"><a class="page-link" href="javascript:sandPage('/',${pageMaker.next})">></a></li>
+                    </c:if>
+                </ul>
+            </nav>
+
             <c:if test="${signIn eq 'true'}">
                 <div class="clearfix float-right">
                     <a class="btn btn-primary" href="/writePost.do"><spring:message code="message.home.btn.write"/></a>

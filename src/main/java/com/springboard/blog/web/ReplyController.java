@@ -61,7 +61,6 @@ public class ReplyController {
         if (replyVO.getPageNo() <=  0 ) {
             replyVO.setPageNo(1);
         }
-        replyVO.setLimit(7);
         replyVO.setPageNo((replyVO.getPageNo()-1)*replyVO.getLimit());
 
         try {

@@ -24,11 +24,24 @@
         ]]>
     </select>
     
-    <select id="selectList" parameterType="PostVO" resultMap="Post">
+    <select id="selectList" parameterType="Criteria" resultMap="Post">
         <![CDATA[
             SELECT *
             FROM posts
-            ORDER BY idx DESC
+            ORDER BY
+                idx DESC
+            LIMIT
+                #{offset}, #{articleCnt}
+        ]]>
+    </select>
+
+    <select id="cntList" parameterType="Criteria" resultType="int">
+        <![CDATA[
+            SELECT
+                COUNT(*)
+            FROM posts
+            ORDER BY
+                idx DESC
         ]]>
     </select>
 

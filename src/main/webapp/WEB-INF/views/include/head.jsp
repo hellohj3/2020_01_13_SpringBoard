@@ -33,6 +33,7 @@
 
     <!-- Custom styles for this template -->
     <link href="/css/clean-blog.min.css" rel="stylesheet">
+    <link href="/css/cus-blog.css" rel="stylesheet">
 
     <!-- Bootstrap core JavaScript -->
     <script src="/vendor/jquery/jquery.min.js"></script>

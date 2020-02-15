@@ -147,6 +147,24 @@
 
         form.submit();
     }
+
+    function sandPage(mode, pageNo) {
+
+        var form = document.createElement("form");
+        form.setAttribute("charset", "UTF-8");
+        form.setAttribute("method", "Post");
+        form.setAttribute("action", mode);
+
+        var hiddenField = document.createElement("input");
+        hiddenField.setAttribute("type", "hidden");
+        hiddenField.setAttribute("name", "pageNo");
+        hiddenField.setAttribute("value", pageNo);
+        form.appendChild(hiddenField);
+
+        document.body.appendChild(form);
+
+        form.submit();
+    }
 </script>
 
 </html>

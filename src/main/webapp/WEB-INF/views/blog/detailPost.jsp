@@ -13,19 +13,6 @@
 <!-- Include ctnHead -->
 <%@ include file="/WEB-INF/views/include/ctnHead.jsp"%>
 
-<style>
-    #writeReplyBtn { width: 100%; }
-    #replyContent { margin-bottom: 1.5%; }
-    #replyWriter { margin-bottom: 1%; }
-    #targetIdx { margin-top: 1%; }
-    #writerArea { margin-top: 0; }
-    #btnArea { padding-left: 7px; font-size: 9pt; }
-    .btn-link { text-transform: uppercase; }
-    .page-link { border: none; }
-    .page-item.active .page-link { background-color: #00657b; border-color: #00657b; }
-    .page-link { color: gray; }
-</style>
-
 <!-- Post Content -->
 <article>
     <div class="container">
@@ -40,35 +27,39 @@
                 </c:if>
                 <hr>
 
-                <!-- Reply List -->
-                <div class="my-3 p-3 bg-white rounded shadow-sm">
-                    <h6 class="border-bottom pb-2 mb-0 col-12"><spring:message code="message.detailPost.label.comments"/></h6>
-                    <div id="replyList"></div>
-                </div>
+                <!-- Reply Area -->
+                <div id="rePlyArea">
+                    <!-- Reply List -->
+                    <div class="my-3 p-3 bg-white rounded shadow-sm">
+                        <h6 class="border-bottom pb-2 mb-0 col-12"><spring:message code="message.detailPost.label.comments"/></h6>
+                        <div id="replyList"></div>
+                    </div>
 
-                <!-- Reply Input -->
-                <div class="my-3 p-3 bg-white rounded shadow-sm">
-                    <form id="replyForm" method="post" onsubmit="return chkReply()">
-                        <div class="row">
-                            <div class="col-sm-9">
-                                <textarea class="form-control" id="replyContent" name="content" rows="5" placeholder="<spring:message code="message.detailPost.label.placeholder.comments"/>" required></textarea>
-                            </div>
-                            <div class="col-sm-3">
-                                <input type="text" class="form-control" id="replyWriter" name="writer" value="" placeholder="<spring:message code="message.detailPost.label.placeholder.name"/>" required>
-                                <input type="hidden" id="targetIdx" name="targetIdx" value="${post.idx}"/>
-                                <input type="hidden" id="pageNo" name="pageNo" value=""/>
-                                <div class="clearfix">
-                                    <a class="btn btn-sm btn-primary" id="writeReplyBtn" href="javascript:doWriteReply()"><spring:message code="message.detailPost.btn.comments"/></a>
+                    <!-- Reply Input -->
+                    <div class="my-3 p-3 bg-white rounded shadow-sm">
+                        <form id="replyForm" method="post" onsubmit="return chkReply()">
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <textarea class="form-control" id="replyContent" name="content" rows="5" placeholder="<spring:message code="message.detailPost.label.placeholder.comments"/>" required></textarea>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" id="replyWriter" name="writer" value="" placeholder="<spring:message code="message.detailPost.label.placeholder.name"/>" required>
+                                    <input type="hidden" id="targetIdx" name="targetIdx" value="${post.idx}"/>
+                                    <input type="hidden" id="pageNo" name="pageNo" value=""/>
+                                    <div class="clearfix">
+                                        <a class="btn btn-sm btn-primary" id="writeReplyBtn" href="javascript:doWriteReply()"><spring:message code="message.detailPost.btn.comments"/></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
 
                 <!-- Reply pagination -->
-                <nav aria-label="Page navigation example">
+                <nav aria-label="Page navigation">
                     <ul class="pagination pg-blue justify-content-center" id="paginationArea"></ul>
                 </nav>
+
             </div>
         </div>
     </div>
@@ -120,7 +111,7 @@
                 }
 
                 replyListArea.innerHTML = replyList;
-                doPrintPage(pageNo);
+                doReplyPagePrint(pageNo);
             },
             error:function(request,status,error){
                 alert("code:"+request.status+"\n"+"error:"+error);
@@ -185,7 +176,7 @@
         });
     }
 
-    function doPrintPage(pageNo) {
+    function doReplyPagePrint(pageNo) {
         var lastDivPage = Math.floor(totalReplyPage/5);
         var prevPage = 0;
         var nextPage = 0;
@@ -193,7 +184,7 @@
 
         if (pageNo > 5) {
             prevPage += (Math.floor((pageNo-1)/5)-1)*5+1;
-            pageHtml += '<li class="page-item"><a class="page-link" href="javascript:doPageNation('+prevPage+')"><</a></li>';
+            pageHtml += '<li class="page-item"><a class="page-link" href="javascript:doReplyPaging('+prevPage+')"><</a></li>';
         }
 
         for (var i=1; i<=5; i++) {
@@ -204,19 +195,19 @@
             } else if (calPage > totalReplyPage) {
                 break;
             } else {
-                pageHtml += '<li class="page-item"><a class="page-link" href="javascript:doPageNation('+calPage+')">'+calPage+'</a></li>';
+                pageHtml += '<li class="page-item"><a class="page-link" href="javascript:doReplyPaging('+calPage+')">'+calPage+'</a></li>';
             }
         }
 
         if ( (totalReplyPage > 5) && pageNo <= (lastDivPage*5) && (lastDivPage*5) != totalReplyPage ) {
             nextPage += (Math.floor((pageNo-1)/5)+1)*5+1;
-            pageHtml += '<li class="page-item"><a class="page-link" href="javascript:doPageNation('+nextPage+')">></a></li>';
+            pageHtml += '<li class="page-item"><a class="page-link" href="javascript:doReplyPaging('+nextPage+')">></a></li>';
         }
 
         document.getElementById("paginationArea").innerHTML = pageHtml;
     }
 
-    function doPageNation(pageNo) {
+    function doReplyPaging(pageNo) {
         document.getElementById("pageNo").value = pageNo;
         doListReply();
     }

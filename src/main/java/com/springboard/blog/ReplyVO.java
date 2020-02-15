@@ -25,7 +25,7 @@ public class ReplyVO {
     private Date regDate;
     private String modifyDate;
     private int pageNo;
-    private int limit;
+    private int limit = 7;
 
     public int getIdx() {
         return idx;

@@ -2,6 +2,7 @@ package com.springboard.blog.service.impl;
 
 import com.springboard.blog.PostVO;
 import com.springboard.blog.service.PostService;
+import com.springboard.commons.pagination.Criteria;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -53,11 +54,22 @@ public class PostServiceImpl implements PostService {
 
     /**
      * Do Select post list from database
+     * @param criteria - Criteria. pagination information
      * @return List. PostVO list
      * @exception Exception
      */
-    public List<PostVO> postList() throws Exception {
-        return postDAO.selectList();
+    public List<PostVO> postList(Criteria criteria) throws Exception {
+        return postDAO.selectList(criteria);
+    }
+
+    /**
+     * Do Select count post list from database
+     * @param criteria - Criteria. pagination information
+     * @return int. list count
+     * @exception Exception
+     */
+    public int postListCnt(Criteria criteria) throws Exception {
+        return postDAO.cntList(criteria);
     }
 
     /**

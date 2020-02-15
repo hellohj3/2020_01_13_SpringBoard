@@ -2,6 +2,8 @@ package com.springboard.blog.web;
 
 import com.springboard.blog.PostVO;
 import com.springboard.blog.service.PostService;
+import com.springboard.commons.pagination.Criteria;
+import com.springboard.commons.pagination.PageMaker;
 import com.springboard.user.UserVO;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,7 @@ public class PostController {
     /**
      * Go to Main Page
      * @param model - Model. Send data and view
+     * @param postVO - PostVO. post data
      * @param request - HttpServletRequest. Get other request
      * @param httpSession - HttpSession. Get session data
      * @param pageNm|bgNm - String|String. Used value for ctnHead.jsp
@@ -35,7 +38,7 @@ public class PostController {
      * @exception Exception
      */
     @RequestMapping("/")
-    public String home(Model model, HttpServletRequest request, HttpSession httpSession) throws Exception {
+    public String home(Model model, PostVO postVO, HttpServletRequest request, HttpSession httpSession) throws Exception {
         /** call session data for check sign-in */
         UserVO userVO = (UserVO) httpSession.getAttribute("signIn");
 
@@ -46,11 +49,19 @@ public class PostController {
             msg = (String) flashMap.get("msg");
         }
 
+        /** paging */
+        Criteria criteria = new Criteria();
+        criteria.setPage(postVO.getPageNo());
+        PageMaker pageMaker = new PageMaker();
+        pageMaker.setCriteria(criteria);
+        pageMaker.setTotalCount(postService.postListCnt(criteria));
+
         /** get post list */
-        List<PostVO> postList = postService.postList();
+        List<PostVO> postList = postService.postList(criteria);
+
         /** convert html from content */
-        for (PostVO postVO : postList) {
-            postVO.setContent(StringEscapeUtils.unescapeHtml4(postVO.getContent()));
+        for (PostVO getVO : postList) {
+            getVO.setContent(StringEscapeUtils.unescapeHtml4(getVO.getContent()));
         }
 
         model.addAttribute("signIn", (userVO != null) ? "true" : "false");
@@ -59,6 +70,7 @@ public class PostController {
         model.addAttribute("bgNm", "home");
         model.addAttribute("msg", msg);
         model.addAttribute("postList", postList);
+        model.addAttribute("pageMaker", pageMaker);
 
         return "blog/home";
     }
