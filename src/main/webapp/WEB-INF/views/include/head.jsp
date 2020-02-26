@@ -59,9 +59,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/aboutMe.do">About Me</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact Me</a>
-                </li>
                 <c:if test="${signIn eq 'true'}">
                     <li class="nav-item">
                         <a class="nav-link" href="/doSignOut.do">SIGN-OUT</a>

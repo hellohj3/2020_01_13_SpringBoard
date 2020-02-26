@@ -115,4 +115,14 @@ public class PostDAO {
 
         mybatis.update("PostDAO.updateReplyCnt", paramMap);
     }
+
+    /**
+     * Do save file data
+     * @param fullName - String. saved path + file name
+     * @return void
+     * @exception Exception
+     */
+    void addFile(String fullName) throws Exception {
+        mybatis.insert("PostDAO.addFile", fullName);
+    }
 }

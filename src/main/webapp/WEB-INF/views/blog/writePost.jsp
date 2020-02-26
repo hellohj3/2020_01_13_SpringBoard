@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
             <div class="post-preview">
-                <form action="${(pageNm eq 'writePost') ? '/doWritePost.do' : '/doModifyPost.do'}" method="post" onsubmit="return chkPost()">
+                <form action="${(pageNm eq 'writePost') ? '/doWritePost.do' : '/doModifyPost.do'}" method="post" onsubmit="return chkPost()" enctype="multipart/form-data">
                     <c:if test="${pageNm eq 'modifyPost'}">
                         <input type="hidden" name="idx" value="${post.idx}">
                     </c:if>

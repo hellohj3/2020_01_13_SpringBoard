@@ -9,5 +9,6 @@
         <typeAlias type="com.springboard.blog.PostVO" alias="PostVO"/>
         <typeAlias type="com.springboard.blog.ReplyVO" alias="ReplyVO"/>
         <typeAlias type="com.springboard.commons.pagination.Criteria" alias="Criteria"/>
+        <typeAlias type="com.springboard.info.InfoVO" alias="InfoVO"/>
     </typeAliases>
 </configuration>

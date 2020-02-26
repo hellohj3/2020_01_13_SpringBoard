@@ -38,6 +38,15 @@ public class PostServiceImpl implements PostService {
      */
     public void insert(PostVO postVO) throws Exception {
         postDAO.insertPost(postVO);
+        String[] files = postVO.getFiles();
+
+        if (files == null) {
+            return;
+        }
+
+        for (String fileName : files) {
+            postDAO.addFile(fileName);
+        }
     }
 
     /**
@@ -90,5 +99,15 @@ public class PostServiceImpl implements PostService {
      */
     public void delete(PostVO postVO) throws Exception {
         postDAO.deletePost(postVO);
+    }
+
+    /**
+     * Do save file data
+     * @param fullName - String. saved path + file name
+     * @return void
+     * @exception Exception
+     */
+    public void addFile(String fullName) throws Exception {
+        postDAO.addFile(fullName);
     }
 }

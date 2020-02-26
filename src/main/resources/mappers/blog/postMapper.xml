@@ -86,6 +86,15 @@
         ]]>
     </update>
 
+    <insert id="addFile" parameterType="String">
+        <![CDATA[
+            INSERT INTO files
+            (file_nm, post_idx)
+            VALUES
+            (#{fileName}, LAST_INSERT_ID())
+        ]]>
+    </insert>
+
     <resultMap id="Post" type="PostVO">
         <id property="idx" column="idx"/>
         <result property="title" column="title"/>

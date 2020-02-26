@@ -70,4 +70,12 @@ public interface PostService {
      * @exception Exception
      */
     void delete(PostVO postVO) throws Exception;
+
+    /**
+     * Do save file data
+     * @param fullName - String. saved path + file name
+     * @return void
+     * @exception Exception
+     */
+    void addFile(String fullName) throws Exception;
 }

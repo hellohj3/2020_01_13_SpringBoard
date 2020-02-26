@@ -1,5 +1,6 @@
 package com.springboard.blog;
 
+import java.util.Arrays;
 import java.util.Date;
 
 /**
@@ -28,6 +29,8 @@ public class PostVO {
     private int viewCnt;
     private int replyCnt;
     private int pageNo;
+    private String[] files;
+    private int fileCnt;
 
     public int getIdx() {
         return idx;
@@ -109,6 +112,23 @@ public class PostVO {
         this.pageNo = pageNo;
     }
 
+    public String[] getFiles() {
+        return files;
+    }
+
+    public void setFiles(String[] files) {
+        this.files = files;
+        setFileCnt(files.length);
+    }
+
+    public int getFileCnt() {
+        return fileCnt;
+    }
+
+    public void setFileCnt(int fileCnt) {
+        this.fileCnt = fileCnt;
+    }
+
     @Override
     public String toString() {
         return "PostVO{" +
@@ -122,6 +142,8 @@ public class PostVO {
                 ", viewCnt=" + viewCnt +
                 ", replyCnt=" + replyCnt +
                 ", pageNo=" + pageNo +
+                ", files=" + Arrays.toString(files) +
+                ", fileCnt=" + fileCnt +
                 '}';
     }
 }

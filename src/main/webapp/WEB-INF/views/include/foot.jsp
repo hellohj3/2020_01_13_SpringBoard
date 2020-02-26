@@ -40,13 +40,11 @@
 
 <!-- user custom script -->
 <script>
-    ClassicEditor
-        .create( document.querySelector( '#content' ) )
-        .then( newEditor => {
-            editor = newEditor;
-        } )
-        .catch(function (error) {
-        } );
+    window.onLoad = function () {
+        CKEDITOR.replace('content', {
+            filebrowserUploadUrl:'/fileupload.do'
+        });
+    };
 
     function chkUser() {
         var id = document.getElementById("id").value;
