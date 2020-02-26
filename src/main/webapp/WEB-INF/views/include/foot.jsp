@@ -22,7 +22,7 @@
                         </a>
                     </li>
                     <li class="list-inline-item">
-                        <a href="https://github.com/hellohj3/2020_01_13_SpringBoard" target="_blank">
+                        <a href="https://github.com/MyHyem?tab=repositories" target="_blank">
                             <span class="fa-stack fa-lg">
                                 <i class="fas fa-circle fa-stack-2x"></i>
                                 <i class="fab fa-github fa-stack-1x fa-inverse"></i>
