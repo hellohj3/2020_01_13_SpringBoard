@@ -94,7 +94,7 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- mybatis log4jdbc-log4j2 라이브러리 -->
+        <!-- mybatis log4jdbc-log4j2 -->
         <dependency>
             <groupId>org.bgee.log4jdbc-log4j2</groupId>
             <artifactId>log4jdbc-log4j2-jdbc4</artifactId>
@@ -151,6 +151,13 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.12</version>
+        </dependency>
+
+        <!--  maria DB -->
+        <dependency>
+            <groupId>org.mariadb.jdbc</groupId>
+            <artifactId>mariadb-java-client</artifactId>
+            <version>1.5.7</version>
         </dependency>
 
         <!-- JDBC -->

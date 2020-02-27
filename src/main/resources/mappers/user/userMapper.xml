@@ -7,9 +7,9 @@
     <insert id="doInsert" parameterType="userVO">
         <![CDATA[
             INSERT INTO users
-            (id, password)
+            (id, password, name)
             VALUES
-            (#{id}, #{password})
+            (#{id}, #{password}, #{name})
         ]]>
     </insert>
 
