@@ -117,4 +117,41 @@ public class UserController {
 
         return "redirect:/";
     }
+
+    /**
+     * Go to Insert Page
+     * @param model - Model. Send data and view
+     * @param request - HttpServletRequest. Other request receive
+     * @param httpSession - HttpSession. Get session data
+     * @param userVO - UserVO. Handling session data
+     * @param pageNm|bgNm - String|String. Used value for ctnHead.jsp
+     * @param signIn - String. Used change message for head.jsp
+     * @return String. SignIn Page address or main page
+     * @exception Exception
+     */
+    @RequestMapping("/insert.do")
+    public String insert(ModelMap model, HttpServletRequest request, HttpSession httpSession) throws Exception {
+
+        model.addAttribute("pageNm", "signIn");
+        model.addAttribute("bgNm", "home");
+        model.addAttribute("signIn", "false");
+
+        return "blog/insertUser";
+    }
+
+    /**
+     * Do Insert user data
+     * @param httpSession - HttpSession. Get session data
+     * @param userVO - UserVO. Handling session data
+     * @return String. Redirect target controller mapping name.
+     * @exception Exception
+     */
+    @RequestMapping("/doInsert.do")
+    public String doInsert(HttpSession httpSession, UserVO userVO) throws Exception {
+        userVO.setPassword(passwordEncoder.encode(userVO.getPassword()));
+
+        userService.doInsert(userVO);
+
+        return "redirect:/";
+    }
 }

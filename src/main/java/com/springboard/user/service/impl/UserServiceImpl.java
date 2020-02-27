@@ -39,4 +39,14 @@ public class UserServiceImpl implements UserService {
         userVO = userDAO.doSignIn(userVO);
         return userVO;
     }
+
+    /**
+     * Do Insert
+     * @param userVO - UserVO. userVO data
+     * @return UserVO
+     * @exception Exception
+     */
+    public void doInsert(UserVO userVO) throws Exception {
+        userDAO.doInsert(userVO);
+    }
 }

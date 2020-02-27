@@ -35,4 +35,14 @@ public class UserDAO {
     public UserVO doSignIn(UserVO userVO) throws Exception {
         return (UserVO)mybatis.selectOne("UserDAO.doSignIn", userVO);
     }
+
+    /**
+     * Process Insert
+     * @param userVO UserVO
+     * @return UserVO
+     * @exception Exception
+     */
+    public void doInsert(UserVO userVO) throws Exception {
+        mybatis.insert("UserDAO.doInsert", userVO);
+    }
 }

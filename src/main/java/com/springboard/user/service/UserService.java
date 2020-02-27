@@ -27,4 +27,12 @@ public interface UserService {
      * @exception Exception
      */
     UserVO doSignIn(UserVO userVO) throws Exception;
+
+    /**
+     * Do Insert
+     * @param userVO - UserVO. userVO data
+     * @return UserVO
+     * @exception Exception
+     */
+    void doInsert(UserVO userVO) throws Exception;
 }
