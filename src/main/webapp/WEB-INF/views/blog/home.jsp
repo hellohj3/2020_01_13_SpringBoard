@@ -17,6 +17,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
+            locale : ${locale}
             <c:choose>
                 <c:when test="${empty postList}">
                     <div class="post-preview">
@@ -61,7 +62,7 @@
                 </ul>
             </nav>
 
-            <c:if test="${signIn eq 'true'}">
+            <c:if test="${signIn ne 'false'}">
                 <div class="clearfix float-right">
                     <a class="btn btn-primary" href="/writePost.do"><spring:message code="message.home.btn.write"/></a>
                 </div>

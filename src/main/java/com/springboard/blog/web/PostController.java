@@ -10,14 +10,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
+import javax.ejb.Local;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 @Controller
@@ -38,7 +41,7 @@ public class PostController {
      * @exception Exception
      */
     @RequestMapping("/")
-    public String home(Model model, PostVO postVO, HttpServletRequest request, HttpSession httpSession) throws Exception {
+    public String home(Model model, PostVO postVO, HttpServletRequest request, HttpSession httpSession, Locale locale) throws Exception {
         /** call session data for check sign-in */
         UserVO userVO = (UserVO) httpSession.getAttribute("signIn");
 
@@ -64,13 +67,20 @@ public class PostController {
             getVO.setContent(StringEscapeUtils.unescapeHtml4(getVO.getContent()));
         }
 
-        model.addAttribute("signIn", (userVO != null) ? "true" : "false");
-        model.addAttribute("user", (userVO != null) ? userVO : "");
+        if (userVO != null && userVO.getId().equals("admin")) {
+            model.addAttribute("signIn", "true");
+        } else if (userVO != null && userVO.getId().equals("test")) {
+            model.addAttribute("signIn", "test");
+        } else {
+            model.addAttribute("signIn", "false");
+        }
         model.addAttribute("pageNm", "home");
         model.addAttribute("bgNm", "home");
         model.addAttribute("msg", msg);
         model.addAttribute("postList", postList);
         model.addAttribute("pageMaker", pageMaker);
+
+        model.addAttribute("locale", locale.toString());
 
         return "blog/home";
     }
@@ -153,7 +163,7 @@ public class PostController {
             /** convert html from content */
             resultVO.setContent(StringEscapeUtils.unescapeHtml4(resultVO.getContent()));
 
-            model.addAttribute("signIn", "true");
+            model.addAttribute("signIn", userVO.getId().equals("admin") ? "true" : "test");
             model.addAttribute("pageNm", "modifyPost");
             model.addAttribute("bgNm", "post");
             model.addAttribute("post", resultVO);
@@ -216,7 +226,13 @@ public class PostController {
         /** convert html from content */
         resultVO.setContent(StringEscapeUtils.unescapeHtml4(resultVO.getContent()));
 
-        model.addAttribute("signIn", (userVO != null) ? "true" : "false");
+        if (userVO != null && userVO.getId().equals("admin")) {
+            model.addAttribute("signIn", "true");
+        } else if (userVO != null && userVO.getId().equals("test")) {
+            model.addAttribute("signIn", "test");
+        } else {
+            model.addAttribute("signIn", "false");
+        }
         model.addAttribute("pageNm", "detailPost");
         model.addAttribute("bgNm", "post");
         model.addAttribute("post", resultVO);

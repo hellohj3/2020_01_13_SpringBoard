@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <c:out value="${post.content}" escapeXml="false"/>
-                <c:if test="${user.id eq 'admin'}">
+                <c:if test="${user.name eq post.writer}">
                     <div class="clearfix">
                         <a class="btn btn-primary" href="javascript:sandData('modifyPost', ${post.idx})"><spring:message code="message.detailPost.btn.modify"/></a>
                         <a class="btn btn-primary" href="javascript:sandData('doDeletePost', ${post.idx})"><spring:message code="message.detailPost.btn.delete"/></a>

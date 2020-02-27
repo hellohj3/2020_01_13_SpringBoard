@@ -56,7 +56,7 @@ public class UserController {
             model.addAttribute("pageNm", "home");
             model.addAttribute("bgNm", "home");
             redirectAttributes.addFlashAttribute("msg", msg);
-            model.addAttribute("signIn", "true");
+            model.addAttribute("signIn", userVO.getId().equals("admin") ? "true" : "test");
 
             return "redirect:/";
         } else {

@@ -58,7 +58,13 @@ public class ExceptionController {
         /** call session data for check sign-in */
         UserVO userVO = (UserVO) httpSession.getAttribute("signIn");
 
-        model.addAttribute("signIn", (userVO != null) ? "true" : "false");
+        if (userVO != null && userVO.getId().equals("admin")) {
+            model.addAttribute("signIn", "true");
+        } else if (userVO != null && userVO.getId().equals("test")) {
+            model.addAttribute("signIn", "test");
+        } else {
+            model.addAttribute("signIn", "false");
+        }
         model.addAttribute("pageNm", "exception");
         model.addAttribute("bgNm", "home");
         model.addAttribute("exception", map);

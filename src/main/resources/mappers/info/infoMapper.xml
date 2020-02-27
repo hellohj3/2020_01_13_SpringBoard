@@ -10,14 +10,7 @@
             FROM info
             WHERE
                 1=1
-                <choose>
-                    <when test="lang == 'ko'">
-                        AND lang = 'ko'
-                    </when>
-                    <otherwise>
-                        AND lang = 'en'
-                    </otherwise>
-                </choose>
+                AND lang = #{lang}
     </select>
 
     <resultMap id="Info" type="InfoVO">
