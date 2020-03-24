@@ -9,6 +9,7 @@ import org.apache.commons.lang3.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 
 import javax.ejb.Local;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -41,7 +43,7 @@ public class PostController {
      * @exception Exception
      */
     @RequestMapping("/")
-    public String home(Model model, PostVO postVO, HttpServletRequest request, HttpSession httpSession, Locale locale) throws Exception {
+    public String home(Model model, PostVO postVO, HttpServletRequest request, HttpSession httpSession, HttpServletResponse response, Locale locale) throws Exception {
         /** call session data for check sign-in */
         UserVO userVO = (UserVO) httpSession.getAttribute("signIn");
 
@@ -80,7 +82,7 @@ public class PostController {
         model.addAttribute("postList", postList);
         model.addAttribute("pageMaker", pageMaker);
 
-        model.addAttribute("locale", locale.toString());
+        model.addAttribute("locale", locale.toLanguageTag());
 
         return "blog/home";
     }

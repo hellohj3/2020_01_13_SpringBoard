@@ -26,4 +26,6 @@ CKEDITOR.editorConfig = function( config ) {
     ];
 
     config.removeButtons = 'Save,NewPage,Flash,Iframe';
+    /*config.filebrowserUploadUrl = '/fileupload.do';*/
+    config.filebrowserUploadUrl = '/imageUpload.do';
 };

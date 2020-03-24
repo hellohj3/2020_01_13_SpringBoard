@@ -18,8 +18,12 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
-                <c:out value="${post.content}" escapeXml="false"/>
-                <c:if test="${user.name eq post.writer || user.id eq 'admin'}">
+                <%--<c:out value="${post.content}" escapeXml="false"/>--%>
+
+                <!-- content -->
+
+
+                <c:if test="${user.name eq post.writer}">
                     <div class="clearfix">
                         <a class="btn btn-primary" href="javascript:sandData('modifyPost', ${post.idx})"><spring:message code="message.detailPost.btn.modify"/></a>
                         <a class="btn btn-primary" href="javascript:sandData('doDeletePost', ${post.idx})"><spring:message code="message.detailPost.btn.delete"/></a>
@@ -120,23 +124,21 @@
     }
 
     function doWriteReply() {
-        if (chkReply()) {
-            $.ajax({
-                type: 'POST',
-                url: "/doWriteReply.do",
-                data: $("#replyForm").serialize(),
-                success: function (data) {
-                    if (data == "success") {
-                        doListReply();
-                        $("#replyContent").val("");
-                        $("#replyWriter").val("");
-                    }
-                },
-                error: function (request, status, error) {
-                    alert("code:" + request.status + "\n" + "error:" + error);
+        $.ajax({
+            type:'POST',
+            url : "/doWriteReply.do",
+            data:$("#replyForm").serialize(),
+            success : function(data) {
+                if(data == "success") {
+                    doListReply();
+                    $("#replyContent").val("");
+                    $("#replyWriter").val("");
                 }
-            });
-        }
+            },
+            error:function(request,status,error) {
+                alert("code:"+request.status+"\n"+"error:"+error);
+            }
+        });
     }
 
     function doDeleteReply(idx) {

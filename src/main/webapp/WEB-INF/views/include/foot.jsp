@@ -41,9 +41,7 @@
 <!-- user custom script -->
 <script>
     window.onLoad = function () {
-        CKEDITOR.replace('content', {
-            filebrowserUploadUrl:'/fileupload.do'
-        });
+        CKEDITOR.replace('content');
     };
 
     function chkUser() {
